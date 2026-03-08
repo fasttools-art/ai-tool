@@ -244,6 +244,74 @@ renderTools(filtered);
 });
 
 </script>
+<script>
 
+async function askAI() {
+
+let question = document.getElementById("aiInput").value;
+
+let response = await fetch("https://api.openai.com/v1/chat/completions", {
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+"Authorization": "Bearer ТУТ_ТВІЙ_API_KEY"
+},
+body: JSON.stringify({
+model: "gpt-4o-mini",
+messages: [
+{role: "user", content: question}
+]
+})
+});
+
+let data = await response.json();
+
+document.getElementById("aiResult").innerText =
+data.choices[0].message.content;
+
+}
+
+</script>
+  <div style="max-width:600px;margin:40px auto;text-align:center;">
+
+<h2>AI Chat</h2>
+
+<textarea id="aiInput" placeholder="Ask AI..." style="width:100%;height:120px;"></textarea>
+
+<br><br>
+
+<button onclick="askAI()">Ask AI</button>
+
+<div id="aiResult" style="margin-top:20px;"></div>
+
+</div>
+  <script>
+
+async function askAI() {
+
+let question = document.getElementById("aiInput").value;
+
+let response = await fetch("https://api.openai.com/v1/chat/completions", {
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+"Authorization": "Bearer ТУТ_ТВІЙ_API_KEY"
+},
+body: JSON.stringify({
+model: "gpt-4o-mini",
+messages: [
+{role: "user", content: question}
+]
+})
+});
+
+let data = await response.json();
+
+document.getElementById("aiResult").innerText =
+data.choices[0].message.content;
+
+}
+
+</script>
 </body>
 </html>
