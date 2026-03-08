@@ -1,34 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
-<title>FastTools AI Generator</title>
+
+<title>FastTools AI Hub</title>
 
 <style>
 
 body{
-font-family: Arial;
-background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
 margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
 }
 
-.container{
-background:rgba(255,255,255,0.1);
-padding:40px;
-border-radius:15px;
-width:90%;
-max-width:500px;
-text-align:center;
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:rgba(0,0,0,0.3);
 backdrop-filter:blur(10px);
 }
 
-h1{
-margin-bottom:20px;
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.menu{
+display:flex;
+gap:25px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+}
+
+.hero{
+text-align:center;
+padding:70px 20px;
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:0.8;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:40px;
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:15px;
+cursor:pointer;
+transition:0.3s;
+backdrop-filter:blur(8px);
+}
+
+.card:hover{
+background:rgba(255,255,255,0.18);
+transform:scale(1.05);
+}
+
+.chat{
+max-width:700px;
+margin:50px auto;
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:15px;
 }
 
 textarea{
@@ -41,26 +95,28 @@ font-size:16px;
 }
 
 button{
-margin-top:15px;
+margin-top:10px;
 padding:12px 25px;
-font-size:16px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 background:#00c6ff;
 color:white;
+font-size:16px;
 cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#0072ff;
 }
 
 #result{
 margin-top:20px;
-background:rgba(0,0,0,0.3);
+background:rgba(0,0,0,0.4);
 padding:15px;
 border-radius:10px;
+min-height:50px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+opacity:0.6;
 }
 
 </style>
@@ -69,37 +125,90 @@ border-radius:10px;
 
 <body>
 
-<div class="container">
+<header>
 
-<h1>FastTools AI Generator</h1>
+<div class="logo">
+FastTools AI
+</div>
 
-<textarea id="input" placeholder="Write something..."></textarea>
+<div class="menu">
+<a href="#">Home</a>
+<a href="#">Tools</a>
+<a href="#">AI Chat</a>
+</div>
+
+</header>
+
+<div class="hero">
+
+<h1>All AI Tools in One Place</h1>
+
+<p>Your futuristic AI hub</p>
+
+</div>
+
+<div class="tools">
+
+<div class="card">AI Chat</div>
+
+<div class="card">Text Generator</div>
+
+<div class="card">Business Ideas</div>
+
+<div class="card">Brand Name Generator</div>
+
+<div class="card">Story Generator</div>
+
+<div class="card">Email Writer</div>
+
+<div class="card">Product Description</div>
+
+<div class="card">Social Media Post</div>
+
+<div class="card">Marketing Ideas</div>
+
+<div class="card">Startup Ideas</div>
+
+</div>
+
+<div class="chat">
+
+<h2>AI Chat</h2>
+
+<textarea id="input" placeholder="Ask anything..."></textarea>
 
 <br>
 
-<button onclick="generate()">Generate</button>
+<button onclick="askAI()">Ask AI</button>
 
 <div id="result"></div>
 
 </div>
 
+<footer>
+
+FastTools AI © 2026
+
+</footer>
+
 <script>
 
-function generate(){
+function askAI(){
 
 let text=document.getElementById("input").value;
 
 if(text==""){
-document.getElementById("result").innerHTML="Please write something first.";
+document.getElementById("result").innerHTML="Write something first.";
 return;
 }
 
 document.getElementById("result").innerHTML=
-"AI generated text:<br><br>"+text;
+"<b>You:</b> "+text+"<br><br><b>AI:</b> I'm your AI assistant.";
 
 }
 
 </script>
 
 </body>
+
 </html>
